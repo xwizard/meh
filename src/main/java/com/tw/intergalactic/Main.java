@@ -1,5 +1,7 @@
 package com.tw.intergalactic;
 
+import com.tw.intergalactic.parser.Parser;
+
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
@@ -12,6 +14,8 @@ public class Main {
     }
 
     List<String> lines = readFile(args[1]);
+    Parser parser = new Parser();
+    parser.parse(lines);
   }
 
   private static List<String> readFile(String path) {

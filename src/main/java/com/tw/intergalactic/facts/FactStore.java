@@ -1,8 +1,19 @@
 package com.tw.intergalactic.facts;
 
+import java.util.HashMap;
+import java.util.Map;
 import java.util.Optional;
 
-public interface FactStore<Definition, Value> {
-  Optional<Fact<Definition, Value>> findFact(Definition definition);
-  void store(Fact<Definition, Value> fact);
+public class FactStore {
+
+  private Map<String, Fact> facts = new HashMap<>();
+
+  @SuppressWarnings("unchecked")
+  public <T> Optional<Fact<T>> findFact(String definition) {
+    return Optional.ofNullable((Fact<T>) facts.get(definition));
+  }
+
+  public void store(Fact<?> fact) {
+    facts.put(fact.getDefinition(), fact);
+  }
 }

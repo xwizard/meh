@@ -1,6 +1,7 @@
 package com.tw.intergalactic.facts;
 
-public interface Fact<Definition, Value> {
-  Definition getDefinition();
-  Value getValue();
+public interface Fact<T> {
+  String getDefinition();
+  FactStore getFactStore();
+  T resolve();
 }
