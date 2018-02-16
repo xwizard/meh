@@ -1,6 +1,7 @@
 package com.tw.intergalactic.parser;
 
 import com.tw.intergalactic.facts.Fact;
+import com.tw.intergalactic.questions.Question;
 
 import java.util.List;
 
@@ -17,7 +18,8 @@ public class Parser {
       Fact fact = context.getFactFactory().createFromUnparsed(line);
       context.getFactStore().store(fact);
     } else {
-      //Question question = context.getQuestionFactory().createFromUnparsed(line);
+      Question<?> question = context.getQuestionFactory().createFromUnparsed(line);
+      context.getQuestionStore().store(question);
     }
   }
 
@@ -27,5 +29,9 @@ public class Parser {
 
   public void parse(List<String> lines) {
     lines.forEach(this::parse);
+  }
+
+  public List<Question<?>> listQuestion() {
+    return context.getQuestionStore().listQuestions();
   }
 }

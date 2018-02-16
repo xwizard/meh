@@ -10,20 +10,14 @@ import com.tw.intergalactic.questions.QuestionStoreImpl;
 public class ParserContextImpl implements ParserContext {
   private final FactFactory factFactory;
   private final FactStore factStore;
-
   private final QuestionFactory questionFactory;
-
-  public QuestionStore getQuestionStore() {
-    return questionStore;
-  }
-
   private final QuestionStore questionStore;
 
   public ParserContextImpl() {
     factStore = new FactStoreImpl();
     factFactory = new FactFactory(factStore);
     questionStore = new QuestionStoreImpl();
-    questionFactory = new QuestionFactory(questionStore);
+    questionFactory = new QuestionFactory(factStore);
   }
 
   @Override
@@ -39,5 +33,10 @@ public class ParserContextImpl implements ParserContext {
   @Override
   public FactStore getFactStore() {
     return factStore;
+  }
+
+  @Override
+  public QuestionStore getQuestionStore() {
+    return questionStore;
   }
 }

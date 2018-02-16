@@ -1,10 +1,10 @@
 package com.tw.intergalactic.facts;
 
-import com.tw.intergalactic.roman.RomanNumber;
-import com.tw.intergalactic.roman.RomanNumberCalculator;
-import com.tw.intergalactic.roman.RomanNumberCalculatorImpl;
+import com.tw.intergalactic.facts.util.IntergalacticUnitUtil;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 
 class StockValueFact extends AbstractFact<Double> {
 
@@ -42,23 +42,7 @@ class StockValueFact extends AbstractFact<Double> {
 
   @Override
   public Double resolve() {
-    List<String> intergalacticNumerals = value.getAmount();
-
-    List<RomanNumber> romanNumbers = new LinkedList<>();
-    for (String numeral : intergalacticNumerals) {
-      Optional<Fact<RomanNumber>> fact = factStore.findFact(numeral);
-
-      if (!fact.isPresent()) {
-        throw new IllegalStateException(numeral + " is not a known fact");
-      }
-
-      romanNumbers.add(fact.get().resolve());
-    }
-
-    RomanNumberCalculator calculator = new RomanNumberCalculatorImpl();
-    double amount = calculator.calculate(romanNumbers);
-
-    return (double) value.getValue() / amount;
+    return (double) value.getValue() / IntergalacticUnitUtil.convert(value.getAmount(), factStore);
   }
 
   public StockValue getValue() {

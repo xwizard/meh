@@ -2,6 +2,7 @@ package com.tw.intergalactic;
 
 import com.tw.intergalactic.parser.Parser;
 import com.tw.intergalactic.parser.ParserContextImpl;
+import com.tw.intergalactic.questions.Question;
 
 import java.io.IOException;
 import java.nio.file.Files;
@@ -17,6 +18,11 @@ public class Main {
     List<String> lines = readFile(args[0]);
     Parser parser = new Parser(new ParserContextImpl());
     parser.parse(lines);
+
+    List<Question<?>> questions = parser.listQuestion();
+    questions.forEach(question -> {
+      System.out.println(question.toString());
+    });
   }
 
   private static List<String> readFile(String path) {
