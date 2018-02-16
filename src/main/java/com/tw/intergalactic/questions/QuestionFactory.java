@@ -1,4 +1,4 @@
-package com.tw.intergalactic.parser;
+package com.tw.intergalactic.questions;
 
 public class QuestionFactory {
   public Question createFromUnparsed(String line) {

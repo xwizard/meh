@@ -2,7 +2,7 @@ package com.tw.intergalactic.facts;
 
 import java.util.Objects;
 
-public class StockValue {
+class StockValue {
   private final String amount;
   private final int value;
 

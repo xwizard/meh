@@ -2,7 +2,7 @@ package com.tw.intergalactic.facts;
 
 import com.tw.intergalactic.roman.RomanNumber;
 
-public class IntergalacticUnitFact extends AbstractFact<RomanNumber> {
+class IntergalacticUnitFact extends AbstractFact<RomanNumber> {
 
   private final static String INTERGALACTIC_UNIT_PATTERN = "^\\s*.+" + IS_PATTERN + ".\\s*$";
 

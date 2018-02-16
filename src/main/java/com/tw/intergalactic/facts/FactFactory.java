@@ -1,9 +1,4 @@
-package com.tw.intergalactic.parser;
-
-import com.tw.intergalactic.facts.Fact;
-import com.tw.intergalactic.facts.FactStore;
-import com.tw.intergalactic.facts.IntergalacticUnitFact;
-import com.tw.intergalactic.facts.StockValueFact;
+package com.tw.intergalactic.facts;
 
 public class FactFactory {
 

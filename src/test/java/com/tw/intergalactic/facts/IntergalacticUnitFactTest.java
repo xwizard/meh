@@ -1,5 +1,8 @@
 package com.tw.intergalactic.facts;
 
+import com.tw.intergalactic.facts.FactStore;
+import com.tw.intergalactic.facts.FactStoreImpl;
+import com.tw.intergalactic.facts.IntergalacticUnitFact;
 import com.tw.intergalactic.roman.RomanNumber;
 import org.junit.Test;
 

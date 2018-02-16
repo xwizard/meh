@@ -6,7 +6,7 @@ import com.tw.intergalactic.roman.RomanNumberCalculatorImpl;
 
 import java.util.*;
 
-public class StockValueFact extends AbstractFact<Double> {
+class StockValueFact extends AbstractFact<Double> {
 
   private static final String WHITESPACE_PATTERN = "\\s";
   private static final String STOCK_VALUE_PATTERN = "^\\s*.*?" + IS_PATTERN + "[0-9]+\\sCredits\\s*";

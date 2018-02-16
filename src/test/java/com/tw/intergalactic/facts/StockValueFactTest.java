@@ -1,5 +1,6 @@
 package com.tw.intergalactic.facts;
 
+import com.tw.intergalactic.facts.*;
 import org.junit.Test;
 
 import static org.hamcrest.CoreMatchers.is;
