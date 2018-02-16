@@ -1,21 +1,19 @@
 package com.tw.intergalactic.questions;
 
-import java.util.HashMap;
-import java.util.Map;
-import java.util.Optional;
+import java.util.*;
 
 public class QuestionStoreImpl implements QuestionStore {
 
-  private Map<String, Question> questions = new HashMap<>();
+  private List<Question<?>> questions = new LinkedList<>();
 
   @Override
   @SuppressWarnings("unchecked")
-  public <T> Optional<Question<T>> findFact(String definition) {
-    return Optional.ofNullable((Question<T>) questions.get(definition));
+  public <T> List<Question<?>> listQuestions() {
+    return questions;
   }
 
   @Override
   public void store(Question<?> question) {
-    questions.put(question.getDefinition(), question);
+    questions.add(question);
   }
 }

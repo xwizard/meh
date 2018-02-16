@@ -1,10 +1,10 @@
 package com.tw.intergalactic.questions;
 
-import java.util.Optional;
+import java.util.List;
 
 public interface QuestionStore {
   @SuppressWarnings("unchecked")
-  <T> Optional<Question<T>> findFact(String definition);
+  <T> List<Question<?>> listQuestions();
 
   void store(Question<?> question);
 }
