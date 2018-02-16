@@ -66,6 +66,10 @@ public class StockValueFact extends AbstractFact<Double> {
     return value;
   }
 
+  public static boolean canHandle(String line) {
+    return line.matches(STOCK_VALUE_PATTERN);
+  }
+
   @Override
   public String toString() {
     return "StockValueFact{" +

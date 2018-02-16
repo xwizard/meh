@@ -1,6 +1,7 @@
 package com.tw.intergalactic;
 
 import com.tw.intergalactic.parser.Parser;
+import com.tw.intergalactic.parser.ParserContext;
 
 import java.io.IOException;
 import java.nio.file.Files;
@@ -13,8 +14,8 @@ public class Main {
       printUsageAndExit();
     }
 
-    List<String> lines = readFile(args[1]);
-    Parser parser = new Parser();
+    List<String> lines = readFile(args[0]);
+    Parser parser = new Parser(new ParserContext());
     parser.parse(lines);
   }
 

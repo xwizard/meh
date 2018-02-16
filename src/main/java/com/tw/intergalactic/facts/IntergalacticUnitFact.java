@@ -30,6 +30,10 @@ public class IntergalacticUnitFact extends AbstractFact<RomanNumber> {
     return new IntergalacticUnitFact(factStore, parts[0].trim(), RomanNumber.valueOf(parts[1].trim()));
   }
 
+  public static boolean canHandle(String line) {
+    return line.matches(INTERGALACTIC_UNIT_PATTERN);
+  }
+
   @Override
   public String toString() {
     return "IntergalacticUnitFact{" +
