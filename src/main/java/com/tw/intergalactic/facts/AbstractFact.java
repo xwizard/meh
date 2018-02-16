@@ -2,6 +2,7 @@ package com.tw.intergalactic.facts;
 
 public abstract class AbstractFact<T> implements Fact<T> {
 
+  protected final static String IS_PATTERN = "\\s+is\\s+";
   protected final FactStore factStore;
   protected final String definition;
 

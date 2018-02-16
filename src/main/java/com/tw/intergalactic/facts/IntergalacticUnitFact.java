@@ -4,7 +4,6 @@ import com.tw.intergalactic.roman.RomanNumber;
 
 public class IntergalacticUnitFact extends AbstractFact<RomanNumber> {
 
-  private final static String IS_PATTERN = "\\s+is\\s+";
   private final static String INTERGALACTIC_UNIT_PATTERN = "^\\s*.+" + IS_PATTERN + ".\\s*$";
 
   private final RomanNumber romanNumber;
@@ -29,5 +28,13 @@ public class IntergalacticUnitFact extends AbstractFact<RomanNumber> {
 
     String[] parts = trimmedLine.split(IS_PATTERN);
     return new IntergalacticUnitFact(factStore, parts[0].trim(), RomanNumber.valueOf(parts[1].trim()));
+  }
+
+  @Override
+  public String toString() {
+    return "IntergalacticUnitFact{" +
+        "romanNumber=" + romanNumber +
+        ", definition='" + definition + '\'' +
+        '}';
   }
 }

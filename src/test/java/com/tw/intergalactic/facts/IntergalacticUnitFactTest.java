@@ -15,7 +15,15 @@ public class IntergalacticUnitFactTest {
 
   @Test
   public void parseShouldParseProperValues() {
-    IntergalacticUnitFact actual = IntergalacticUnitFact.parse(factStore(), "prok is\tV ");
+    IntergalacticUnitFact actual = IntergalacticUnitFact.parse(factStore(), "prok is V ");
+
+    assertThat(actual.getDefinition(), is("prok"));
+    assertThat(actual.resolve(), is(RomanNumber.V));
+  }
+
+  @Test
+  public void parseShouldParseLineWithExtraWhitespacesValues() {
+    IntergalacticUnitFact actual = IntergalacticUnitFact.parse(factStore(), "\t \t\t prok\tis   V\t ");
 
     assertThat(actual.getDefinition(), is("prok"));
     assertThat(actual.resolve(), is(RomanNumber.V));
