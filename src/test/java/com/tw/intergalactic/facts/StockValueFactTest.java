@@ -1,7 +1,8 @@
 package com.tw.intergalactic.facts;
 
-import com.tw.intergalactic.facts.*;
 import org.junit.Test;
+
+import java.util.Arrays;
 
 import static org.hamcrest.CoreMatchers.is;
 import static org.hamcrest.MatcherAssert.assertThat;
@@ -31,7 +32,7 @@ public class StockValueFactTest {
     StockValueFact actual = StockValueFact.parse(factStore(), PISH_PISH_IRON_IS_3910_CREDITS);
 
     assertThat(actual.getDefinition(), is("Iron"));
-    assertThat(actual.getValue(), is(new StockValue("pish pish", 3910)));
+    assertThat(actual.getValue(), is(new StockValue(Arrays.asList("pish", "pish"), 3910)));
   }
 
   @Test

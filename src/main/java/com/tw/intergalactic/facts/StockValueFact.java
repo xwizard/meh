@@ -31,19 +31,18 @@ class StockValueFact extends AbstractFact<Double> {
     }
 
     String definition = amountAndDefinition.remove(amountAndDefinition.size() - 1);
-    String amount = String.join(" ", amountAndDefinition);
 
     String[] credits = parts[1].split(WHITESPACE_PATTERN);
     int value = Integer.parseInt(credits[0]);
 
-    StockValue stockValue = new StockValue(amount, value);
+    StockValue stockValue = new StockValue(amountAndDefinition, value);
 
     return new StockValueFact(factStore, definition, stockValue);
   }
 
   @Override
   public Double resolve() {
-    String[] intergalacticNumerals = value.getAmount().split(" ");
+    List<String> intergalacticNumerals = value.getAmount();
 
     List<RomanNumber> romanNumbers = new LinkedList<>();
     for (String numeral : intergalacticNumerals) {

@@ -1,17 +1,18 @@
 package com.tw.intergalactic.facts;
 
+import java.util.List;
 import java.util.Objects;
 
 class StockValue {
-  private final String amount;
+  private final List<String> amount;
   private final int value;
 
-  public StockValue(String amount, int value) {
+  public StockValue(List<String> amount, int value) {
     this.amount = amount;
     this.value = value;
   }
 
-  public String getAmount() {
+  public List<String> getAmount() {
     return amount;
   }
 
