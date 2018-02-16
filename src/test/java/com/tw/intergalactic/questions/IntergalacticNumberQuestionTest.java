@@ -1,6 +1,6 @@
 package com.tw.intergalactic.questions;
 
-import com.tw.intergalactic.facts.Fact;
+import com.tw.intergalactic.RomanStubFact;
 import com.tw.intergalactic.facts.FactStore;
 import com.tw.intergalactic.facts.FactStoreImpl;
 import com.tw.intergalactic.roman.RomanNumber;
@@ -41,28 +41,10 @@ public class IntergalacticNumberQuestionTest {
 
   private FactStore factStore() {
     FactStoreImpl factStore = new FactStoreImpl();
-    factStore.store(fact("pish", RomanNumber.X));
-    factStore.store(fact("tegj", RomanNumber.L));
-    factStore.store(fact("glob", RomanNumber.I));
+    factStore.store(new RomanStubFact("pish", RomanNumber.X));
+    factStore.store(new RomanStubFact("tegj", RomanNumber.L));
+    factStore.store(new RomanStubFact("glob", RomanNumber.I));
     return factStore;
   }
 
-  private Fact<RomanNumber> fact(String intergalactic, RomanNumber roman) {
-    return new Fact<RomanNumber>() {
-      @Override
-      public String getDefinition() {
-        return intergalactic;
-      }
-
-      @Override
-      public FactStore getFactStore() {
-        return null;
-      }
-
-      @Override
-      public RomanNumber resolve() {
-        return roman;
-      }
-    };
-  }
 }
