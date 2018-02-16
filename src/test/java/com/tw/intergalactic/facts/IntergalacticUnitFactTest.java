@@ -40,6 +40,6 @@ public class IntergalacticUnitFactTest {
   }
 
   private FactStore factStore() {
-    return new FactStore();
+    return new FactStoreImpl();
   }
 }

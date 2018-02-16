@@ -1,6 +1,7 @@
 package com.tw.intergalactic.parser;
 
 import com.tw.intergalactic.facts.FactStore;
+import com.tw.intergalactic.facts.FactStoreImpl;
 
 public class ParserContext {
   private final FactFactory factFactory;
@@ -8,7 +9,7 @@ public class ParserContext {
   private final FactStore factStore;
 
   public ParserContext() {
-    factStore = new FactStore();
+    factStore = new FactStoreImpl();
     factFactory = new FactFactory(factStore);
     questionFactory = null;
   }

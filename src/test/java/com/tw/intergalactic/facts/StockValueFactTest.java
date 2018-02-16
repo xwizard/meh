@@ -48,7 +48,7 @@ public class StockValueFactTest {
   }
 
   private FactStore factStore() {
-    FactStore factStore = new FactStore();
+    FactStore factStore = new FactStoreImpl();
     IntergalacticUnitFact fact = IntergalacticUnitFact.parse(factStore, "pish is X");
     factStore.store(fact);
     return factStore;
