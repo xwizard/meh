@@ -43,7 +43,7 @@ public class StockValueQuestion implements Question<Long> {
 
   @Override
   public String toString() {
-    return String.format("%s %s %d", String.join(" ", intergalacticNumber), stockName, answer());
+    return String.format("%s %s is %d", String.join(" ", intergalacticNumber), stockName, answer());
   }
 
   public static StockValueQuestion parse(FactStore factStore, String line) {
