@@ -16,6 +16,10 @@ public class QuestionFactory {
       return IntergalacticNumberQuestion.parse(factStore, line);
     }
 
+    if (StockValueQuestion.canHandle(line)) {
+      return StockValueQuestion.parse(factStore, line);
+    }
+
     return unknownQuestion();
   }
 

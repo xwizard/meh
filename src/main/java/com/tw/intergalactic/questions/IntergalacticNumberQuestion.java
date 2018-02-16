@@ -37,8 +37,8 @@ public class IntergalacticNumberQuestion implements Question<Long> {
     List<String> intergalacticNumber = Arrays.asList(line
         .trim()
         .replaceAll(INTERGALACTIC_NUMBER_QUESTION, "")
-        .replaceAll("\\s\\?", "")
-        .split("\\s"));
+        .replaceAll("\\s+\\?", "")
+        .split("\\s+"));
 
     return new IntergalacticNumberQuestion(factStore, intergalacticNumber);
   }

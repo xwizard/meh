@@ -35,5 +35,6 @@ public class Main {
 
   private static void printUsageAndExit() {
     System.out.println("Usage: intergalactic.jar fileToParse");
+    System.exit(1);
   }
 }
