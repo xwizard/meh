@@ -1,6 +1,7 @@
 package com.tw.intergalactic.questions;
 
-import java.util.*;
+import java.util.LinkedList;
+import java.util.List;
 
 public class QuestionStoreImpl implements QuestionStore {
 

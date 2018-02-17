@@ -10,11 +10,11 @@ class StockValueFact extends AbstractFact<Double> {
 
   private static final String WHITESPACE_PATTERN = "\\s";
   private static final String STOCK_VALUE_PATTERN = "^\\s*.*?" + IS_PATTERN + "[0-9]+\\sCredits\\s*";
-  public static final String NOT_VALID_FACT = " is not a valid stock value fact";
+  private static final String NOT_VALID_FACT = " is not a valid stock value fact";
 
   private final StockValue value;
 
-  protected StockValueFact(FactStore factStore, String definition, StockValue value) {
+  private StockValueFact(FactStore factStore, String definition, StockValue value) {
     super(factStore, definition);
     this.value = value;
   }
@@ -40,8 +40,16 @@ class StockValueFact extends AbstractFact<Double> {
   }
 
   private static void assertArgument(String line) {
-    if (line == null) {throw new IllegalArgumentException("line cannot be null");}
-    if (!line.matches(STOCK_VALUE_PATTERN)){ throw new IllegalArgumentException(line + NOT_VALID_FACT);}
+    if (line == null) {
+      throw new IllegalArgumentException("line cannot be null");
+    }
+    if (!line.matches(STOCK_VALUE_PATTERN)) {
+      throw new IllegalArgumentException(line + NOT_VALID_FACT);
+    }
+  }
+
+  public static boolean canHandle(String line) {
+    return line.matches(STOCK_VALUE_PATTERN);
   }
 
   @Override
@@ -51,10 +59,6 @@ class StockValueFact extends AbstractFact<Double> {
 
   public StockValue getValue() {
     return value;
-  }
-
-  public static boolean canHandle(String line) {
-    return line.matches(STOCK_VALUE_PATTERN);
   }
 
   @Override

@@ -23,6 +23,34 @@ public class StockValueQuestion implements Question<Long> {
     this.stockName = stockName;
   }
 
+  public static StockValueQuestion parse(FactStore factStore, String line) {
+    assertArgument(line);
+
+    List<String> parts = new LinkedList<>(Arrays.asList(line
+        .trim()
+        .replaceAll(STOCK_QUESTION, "")
+        .replaceAll("\\s+\\?", "").split("\\s+")));
+
+    if (parts.size() < 2) throw new IllegalArgumentException(line + " does not define stock name correctly");
+
+    String stockName = parts.remove(parts.size() - 1);
+
+    return new StockValueQuestion(parts, factStore, stockName);
+  }
+
+  private static void assertArgument(String line) {
+    if (line == null) {
+      throw new IllegalArgumentException("line cannot be null");
+    }
+    if (!canHandle(line)) {
+      throw new IllegalArgumentException(line + " is not a valid question");
+    }
+  }
+
+  public static boolean canHandle(String line) {
+    return line.matches(STOCK_QUESTION_PATTERN);
+  }
+
   @Override
   public Long answer() {
     Optional<Fact<Double>> stockValueFact = factStore.findFact(stockName);
@@ -46,36 +74,12 @@ public class StockValueQuestion implements Question<Long> {
     return String.format("%s %s is %d Credits", getDefinition(), stockName, answer());
   }
 
-  public static StockValueQuestion parse(FactStore factStore, String line) {
-    assertArgument(line);
-
-    List<String> parts = new LinkedList<>(Arrays.asList(line
-        .trim()
-        .replaceAll(STOCK_QUESTION, "")
-        .replaceAll("\\s+\\?", "").split("\\s+")));
-
-    if (parts.size() < 2) throw new IllegalArgumentException(line + " does not define stock name correctly");
-
-    String stockName = parts.remove(parts.size() - 1);
-
-    return new StockValueQuestion(parts, factStore, stockName);
-  }
-
-  private static void assertArgument(String line) {
-    if (line == null) {throw new IllegalArgumentException("line cannot be null"); }
-    if (!canHandle(line)) {throw new IllegalArgumentException(line + " is not a valid question");}
-  }
-
   public List<String> getIntergalacticNumber() {
     return intergalacticNumber;
   }
 
   public String getStockName() {
     return stockName;
-  }
-
-  public static boolean canHandle(String line) {
-    return line.matches(STOCK_QUESTION_PATTERN);
   }
 
   @Override

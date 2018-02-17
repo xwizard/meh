@@ -20,7 +20,4 @@ abstract class AbstractFact<T> implements Fact<T> {
   public FactStore getFactStore() {
     return factStore;
   }
-
-  @Override
-  public abstract T resolve();
 }

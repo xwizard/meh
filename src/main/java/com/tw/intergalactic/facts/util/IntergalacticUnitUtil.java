@@ -12,6 +12,8 @@ import java.util.Optional;
 
 public class IntergalacticUnitUtil {
 
+  private final static RomanNumberCalculator calculator = new RomanNumberCalculatorImpl();
+
   public static double convert(List<String> intergalactic, FactStore factStore) {
     List<RomanNumber> romanNumbers = new LinkedList<>();
     for (String numeral : intergalactic) {
@@ -23,8 +25,6 @@ public class IntergalacticUnitUtil {
 
       romanNumbers.add(fact.get().resolve());
     }
-
-    RomanNumberCalculator calculator = new RomanNumberCalculatorImpl();
 
     return (double) calculator.calculate(romanNumbers);
   }

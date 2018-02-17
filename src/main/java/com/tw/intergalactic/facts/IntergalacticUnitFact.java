@@ -13,13 +13,10 @@ class IntergalacticUnitFact extends AbstractFact<RomanNumber> {
     this.romanNumber = romanNumber;
   }
 
-  @Override
-  public RomanNumber resolve() {
-    return romanNumber;
-  }
-
   public static IntergalacticUnitFact parse(FactStore factStore, String line) {
-    if (line == null) {throw new IllegalArgumentException("line cannot be null");}
+    if (line == null) {
+      throw new IllegalArgumentException("line cannot be null");
+    }
 
     String trimmedLine = line.trim();
 
@@ -32,6 +29,11 @@ class IntergalacticUnitFact extends AbstractFact<RomanNumber> {
 
   public static boolean canHandle(String line) {
     return line.matches(INTERGALACTIC_UNIT_PATTERN);
+  }
+
+  @Override
+  public RomanNumber resolve() {
+    return romanNumber;
   }
 
   @Override

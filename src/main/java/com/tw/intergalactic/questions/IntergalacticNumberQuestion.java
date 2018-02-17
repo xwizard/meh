@@ -19,17 +19,6 @@ public class IntergalacticNumberQuestion implements Question<Long> {
     this.factStore = factStore;
   }
 
-  @Override
-  public Long answer() {
-
-    return Math.round(IntergalacticUnitUtil.convert(intergalacticNumber, factStore));
-  }
-
-  @Override
-  public String getDefinition() {
-    return String.join(" ", intergalacticNumber);
-  }
-
   public static IntergalacticNumberQuestion parse(FactStore factStore, String line) {
     assertArgument(line);
 
@@ -43,12 +32,27 @@ public class IntergalacticNumberQuestion implements Question<Long> {
   }
 
   private static void assertArgument(String line) {
-    if (line == null) { throw new IllegalArgumentException("line cannot be null"); }
-    if (!canHandle(line)){ throw new IllegalArgumentException(line + " is not a valid question");}
+    if (line == null) {
+      throw new IllegalArgumentException("line cannot be null");
+    }
+    if (!canHandle(line)) {
+      throw new IllegalArgumentException(line + " is not a valid question");
+    }
   }
 
   public static boolean canHandle(String line) {
     return line.matches(INTERGALACTIC_NUMBER_QUESTION_PATTERN);
+  }
+
+  @Override
+  public Long answer() {
+
+    return Math.round(IntergalacticUnitUtil.convert(intergalacticNumber, factStore));
+  }
+
+  @Override
+  public String getDefinition() {
+    return String.join(" ", intergalacticNumber);
   }
 
   List<String> getIntergalacticNumber() {

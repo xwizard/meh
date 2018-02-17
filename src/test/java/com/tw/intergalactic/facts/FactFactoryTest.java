@@ -1,8 +1,5 @@
 package com.tw.intergalactic.facts;
 
-
-
-
 import org.junit.Test;
 
 import static junit.framework.TestCase.assertTrue;
