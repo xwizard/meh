@@ -38,12 +38,12 @@ public class StockValueQuestion implements Question<Long> {
 
   @Override
   public String getDefinition() {
-    return null;
+    return String.join(" ", intergalacticNumber);
   }
 
   @Override
-  public String toString() {
-    return String.format("%s %s is %d Credits", String.join(" ", intergalacticNumber), stockName, answer());
+  public String getFormattedAnswer() {
+    return String.format("%s %s is %d Credits", getDefinition(), stockName, answer());
   }
 
   public static StockValueQuestion parse(FactStore factStore, String line) {

@@ -6,7 +6,7 @@ import java.util.Optional;
 
 public class FactStoreImpl implements FactStore {
 
-  private Map<String, Fact> facts = new HashMap<>();
+  private Map<String, Fact<?>> facts = new HashMap<>();
 
   @Override
   @SuppressWarnings("unchecked")

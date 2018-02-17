@@ -52,7 +52,7 @@ public class IntergalacticNumberQuestion implements Question<Long> {
   }
 
   @Override
-  public String toString() {
+  public String getFormattedAnswer() {
     return String.format("%s is %d", getDefinition(), answer());
   }
 }

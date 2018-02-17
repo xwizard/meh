@@ -16,10 +16,15 @@ public class Main {
     }
 
     List<String> lines = readFile(args[0]);
+
     Parser parser = new Parser(new ParserContextImpl());
     parser.parse(lines);
 
     List<Question<?>> questions = parser.listQuestion();
+    printAnswers(questions);
+  }
+
+  private static void printAnswers(List<Question<?>> questions) {
     questions.forEach(question -> {
       System.out.println(question.toString());
     });
