@@ -31,8 +31,7 @@ public class IntergalacticNumberQuestion implements Question<Long> {
   }
 
   public static IntergalacticNumberQuestion parse(FactStore factStore, String line) {
-    if (line == null) throw new IllegalArgumentException("line cannot be null");
-    if (!canHandle(line)) throw new IllegalArgumentException(line + " is not a valid question");
+    assertArgument(line);
 
     List<String> intergalacticNumber = Arrays.asList(line
         .trim()
@@ -41,6 +40,11 @@ public class IntergalacticNumberQuestion implements Question<Long> {
         .split("\\s+"));
 
     return new IntergalacticNumberQuestion(factStore, intergalacticNumber);
+  }
+
+  private static void assertArgument(String line) {
+    if (line == null) { throw new IllegalArgumentException("line cannot be null"); }
+    if (!canHandle(line)){ throw new IllegalArgumentException(line + " is not a valid question");}
   }
 
   public static boolean canHandle(String line) {
@@ -54,5 +58,13 @@ public class IntergalacticNumberQuestion implements Question<Long> {
   @Override
   public String getFormattedAnswer() {
     return String.format("%s is %d", getDefinition(), answer());
+  }
+
+  @Override
+  public String toString() {
+    return "IntergalacticNumberQuestion{" +
+        "intergalacticNumber=" + intergalacticNumber +
+        ", factStore=" + factStore +
+        '}';
   }
 }

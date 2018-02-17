@@ -18,4 +18,9 @@ public class UnknownQuestion implements Question<String> {
   public String getFormattedAnswer() {
     return I_HAVE_NO_IDEA_WHAT_YOU_ARE_TALKING_ABOUT;
   }
+
+  @Override
+  public String toString() {
+    return I_HAVE_NO_IDEA_WHAT_YOU_ARE_TALKING_ABOUT;
+  }
 }

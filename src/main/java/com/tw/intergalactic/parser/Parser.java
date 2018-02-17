@@ -34,4 +34,8 @@ public class Parser {
   public List<Question<?>> listQuestion() {
     return context.getQuestionStore().listQuestions();
   }
+
+  public ParserContext getContext() {
+    return context;
+  }
 }

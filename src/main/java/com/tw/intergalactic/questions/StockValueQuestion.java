@@ -47,8 +47,7 @@ public class StockValueQuestion implements Question<Long> {
   }
 
   public static StockValueQuestion parse(FactStore factStore, String line) {
-    if (line == null) throw new IllegalArgumentException("line cannot be null");
-    if (!canHandle(line)) throw new IllegalArgumentException(line + " is not a valid question");
+    assertArgument(line);
 
     List<String> parts = new LinkedList<>(Arrays.asList(line
         .trim()
@@ -62,6 +61,11 @@ public class StockValueQuestion implements Question<Long> {
     return new StockValueQuestion(parts, factStore, stockName);
   }
 
+  private static void assertArgument(String line) {
+    if (line == null) {throw new IllegalArgumentException("line cannot be null"); }
+    if (!canHandle(line)) {throw new IllegalArgumentException(line + " is not a valid question");}
+  }
+
   public List<String> getIntergalacticNumber() {
     return intergalacticNumber;
   }
@@ -72,5 +76,14 @@ public class StockValueQuestion implements Question<Long> {
 
   public static boolean canHandle(String line) {
     return line.matches(STOCK_QUESTION_PATTERN);
+  }
+
+  @Override
+  public String toString() {
+    return "StockValueQuestion{" +
+        "intergalacticNumber=" + intergalacticNumber +
+        ", factStore=" + factStore +
+        ", stockName='" + stockName + '\'' +
+        '}';
   }
 }

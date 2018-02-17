@@ -19,7 +19,7 @@ class IntergalacticUnitFact extends AbstractFact<RomanNumber> {
   }
 
   public static IntergalacticUnitFact parse(FactStore factStore, String line) {
-    if (line == null) throw new IllegalArgumentException("line cannot be null");
+    if (line == null) {throw new IllegalArgumentException("line cannot be null");}
 
     String trimmedLine = line.trim();
 

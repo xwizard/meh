@@ -26,7 +26,7 @@ public class Main {
 
   private static void printAnswers(List<Question<?>> questions) {
     questions.forEach(question -> {
-      System.out.println(question.toString());
+      System.out.println(question.getFormattedAnswer());
     });
   }
 

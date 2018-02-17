@@ -20,8 +20,7 @@ class StockValueFact extends AbstractFact<Double> {
   }
 
   public static StockValueFact parse(FactStore factStore, String line) {
-    if (line == null) throw new IllegalArgumentException("line cannot be null");
-    if (!line.matches(STOCK_VALUE_PATTERN)) throw new IllegalArgumentException(line + NOT_VALID_FACT);
+    assertArgument(line);
 
     String[] parts = line.trim().split(IS_PATTERN);
 
@@ -38,6 +37,11 @@ class StockValueFact extends AbstractFact<Double> {
     StockValue stockValue = new StockValue(amountAndDefinition, value);
 
     return new StockValueFact(factStore, definition, stockValue);
+  }
+
+  private static void assertArgument(String line) {
+    if (line == null) {throw new IllegalArgumentException("line cannot be null");}
+    if (!line.matches(STOCK_VALUE_PATTERN)){ throw new IllegalArgumentException(line + NOT_VALID_FACT);}
   }
 
   @Override
